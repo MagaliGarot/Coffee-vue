@@ -2,25 +2,29 @@
   <div class="hello">
 
     <h1>Coffee Liège</h1>
-   <p class="titleMenu">{{message}}</p>
+    <p class="titleMenu">{{message}}</p>
 
-    <div class="containerPrincipale">
-      <div class="menuContainer" v-for="(item, index) in simpleMenu" :key="index">
-        <div class="menu" v-if="item.disponible == true" v-on:click="addProduit(item) in simpleMenu">
-            <img v-if="item.disponible == true" class="pictureMenu" v-bind:src="item.url" alt="item.alt"/>
-            {{item.label}} : <br/> {{item.cost}} $
-        </div>
-      </div>  
-    </div>
-
-    <div v-if="shop.length > 0">
-
-      <div id="panier" v-for="item in shop" :key="item">
-          {{item.label}} : {{item.cost}} $
+      <div class="containerPrincipale">
+        <div class="menuContainer" v-for="(item, index) in simpleMenu" :key="index">
+          <div class="menu" v-if="item.disponible == true" v-on:click="addProduit(item) in simpleMenu">
+              <img v-if="item.disponible == true" class="pictureMenu" v-bind:src="item.url" alt="item.alt"/>
+              {{item.label}} : <br/> {{item.cost}} $
+          </div>
+        </div>  
       </div>
-      
+
+      <div v-if="shop.length > 0">
+
+        <div id="panier" v-for="item in shop" :key="item">
+            {{ item.label }} : {{ item.cost }} $
+            
+        </div>
+      <!-- <div id="panier" v-for="item in shop" :key="item">
+            TOTAL = {{  totalCofee }} $
+        </div> -->
+        <p>TOTAL = {{  totalCofee }} $</p>
         
-    </div>
+      </div>
 
     </div>
 
@@ -56,10 +60,19 @@ export default {
         label: simpleMenu.label,
         cost: simpleMenu.cost
       })
-    }
+    },
     },
 
     computed: {
+
+      totalCofee() {
+          let total = 0
+
+          this.shop.forEach(item => {
+            total += item.cost
+          })
+          return  total
+        },
       
       }
 }
