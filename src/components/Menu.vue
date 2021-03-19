@@ -2,25 +2,34 @@
   <div class="hello">
 
     <h1>Coffee Liège</h1>
+
+    <p class="intro"> Curabitur lacus ligula, ullamcorper aliquet vulputate quis, dignissim vitae justo. 
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
+      <br/>
+      Aenean hendrerit quis lorem et commodo. 
+      Integer fringilla velit eget dui sodales aliquet. 
+      <br/>
+      Vestibulum et magna lobortis justo sodales placerat at vel nunc. 
+    </p>
     <p class="titleMenu">{{message}}</p>
 
       <div class="containerPrincipale">
 
         <div class="menuContainer" v-for="(item, index) in simpleMenu" :key="index">
 
-          <div class="menu" v-if="item.disponible == true" v-on:click="addProduit(item) in simpleMenu">
+          <div class="menu" v-if="item.disponible == true">
 
               <img v-if="item.disponible == true" class="pictureMenu" v-bind:src="item.url" alt="item.alt"/>
 
 
              <div class="icon" v-if="showIcons">
-                <button class="button" v-on:click="showIcons = !showIcons">
+                <button class="button" v-on:click="addProduit(item) in simpleMenu">
                     <img class="sizeIcon" src="../assets/heart-regular.svg"/>   
                 </button>
               </div>  
 
               <div class="icon" v-if="!showIcons">
-                <button v-on:click="showIcons = !showIcons">
+                <button v-on:click="human">
                     <img class="sizeIcon" src="../assets/heart-solid.svg"/>  
                 </button>
               </div>
@@ -68,6 +77,7 @@ export default {
             ],
 
               shop : [],
+              like: [],
         }
     },
 
@@ -79,13 +89,12 @@ export default {
         label: simpleMenu.label,
         cost: simpleMenu.cost
       })
+      this.showIcons= false
     },
 
-   zombie() {
-    this.showIcons=false
-  },
-  human() {
-    this.showIcons=true
+ 
+    human() {
+    this.showIcons = true
   }
 
     },
@@ -116,6 +125,8 @@ h1{
   font-size: 4.4rem;
   color: rgb(201, 228, 246);
   font-family: 'Fredericka the Great', cursive;
+
+  margin-bottom:60px;
 }
 
 .titleMenu{
@@ -125,6 +136,16 @@ h1{
   font-size: 3rem;
   font-weight: 800;
   color: rgb(233, 222, 222);
+}
+
+.intro{
+  width: 80%;
+  margin-right: auto;
+  margin-left: auto;
+
+  color:white;
+  line-height: 2em;
+  font-size: 1.5rem;
 }
 
 
