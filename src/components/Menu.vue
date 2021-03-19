@@ -205,7 +205,6 @@ h1{
 
   background: rgb(0,0,0);
   background: linear-gradient(180deg, rgba(0,0,0,1) 0%, rgba(49,49,74,1) 51%, rgba(93,130,138,1) 100%);
-  opacity: 50%;
 
   border-radius: 40px;
 }
