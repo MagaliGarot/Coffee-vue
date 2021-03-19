@@ -5,24 +5,39 @@
     <p class="titleMenu">{{message}}</p>
 
       <div class="containerPrincipale">
+
         <div class="menuContainer" v-for="(item, index) in simpleMenu" :key="index">
+
           <div class="menu" v-if="item.disponible == true" v-on:click="addProduit(item) in simpleMenu">
+
               <img v-if="item.disponible == true" class="pictureMenu" v-bind:src="item.url" alt="item.alt"/>
+
+
+             <div class="icon" v-if="showIcons">
+                <button class="button" v-on:click="showIcons = !showIcons">
+                    <img class="sizeIcon" src="../assets/heart-regular.svg"/>   
+                </button>
+              </div>  
+
+              <div class="icon" v-if="!showIcons">
+                <button v-on:click="showIcons = !showIcons">
+                    <img class="sizeIcon" src="../assets/heart-solid.svg"/>  
+                </button>
+              </div>
+
               {{item.label}} : <br/> {{item.cost}} $
           </div>
+
         </div>  
+
       </div>
 
-      <div v-if="shop.length > 0">
-
+      <div class="containerFavoriteMenu" v-if="shop.length > 0">
+        <p class="titleMenu">My favorite Menu</p>
         <div id="panier" v-for="item in shop" :key="item">
-            {{ item.label }} : {{ item.cost }} $
-            
+            ○ {{ item.label }} : {{ item.cost }} $
         </div>
-      <!-- <div id="panier" v-for="item in shop" :key="item">
-            TOTAL = {{  totalCofee }} $
-        </div> -->
-        <p>TOTAL = {{  totalCofee }} $</p>
+        <p class="priceTotal">Total = {{  totalCofee }} $</p>
         
       </div>
 
@@ -31,11 +46,15 @@
 </template>
 
 <script>
+
+
 export default {
   name: 'Menu',
    data: () => {
         return {
-            message : "Menu de saison : ",
+            message : "Menu",
+
+            showIcons: true,
           
              simpleMenu: [
                 { label: 'Black Coffee', cost: 3, disponible:true, url: require('@/assets/coffeeblack.jpg'), alt: "Black Coffee"},
@@ -61,6 +80,14 @@ export default {
         cost: simpleMenu.cost
       })
     },
+
+   zombie() {
+    this.showIcons=false
+  },
+  human() {
+    this.showIcons=true
+  }
+
     },
 
     computed: {
@@ -80,14 +107,30 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+
+/* ================================
+    TITLE PAGE
+   ================================ */
+
 h1{
-  font-size: 4rem;
-  color: rgb(188, 211, 226);
+  font-size: 4.4rem;
+  color: rgb(201, 228, 246);
+  font-family: 'Fredericka the Great', cursive;
 }
 
-a {
-  color: #42b983;
+.titleMenu{
+  margin-top: 60px;
+  margin-bottom: 60px;
+
+  font-size: 3rem;
+  font-weight: 800;
+  color: rgb(233, 222, 222);
 }
+
+
+/* ================================
+    CONTAINER
+   ================================ */
 
 .containerPrincipale{
   display: flex;
@@ -100,31 +143,88 @@ a {
   display: flex;
   justify-content: center;
 }
+
+/* ================================
+    MENU -> LIST COFFEE
+   ================================ */
+
 .menu {
-  margin: 10px 10px;
-  font-size: 1.4rem;
+  margin: 15px 10px;
+
+  font-size: 1.5rem;
   color: white;
+  
   width: 200px;
-  height: 200px;
+  height: 240px;
+
   background-color: black;
   border-radius: 10px;
 }
 
-.titleMenu{
-  margin-top: 60px;
-  margin-bottom: 60px;
-  font-size: 2rem;
-   color: rgb(233, 222, 222);
-}
-
 .pictureMenu{
+  margin-bottom : 10px;
   width: 200px;
   height: 100px;
 }
 
+/* ================================
+    Favorite MENU
+   ================================ */
+
+.containerFavoriteMenu{
+  width: 87%;
+  height: 100%;
+
+  padding: 20px 20px;
+
+  margin-right: auto;
+  margin-left: auto;
+  margin-top: 60px;
+  margin-bottom: 60px;
+
+  background: rgb(0,0,0);
+  background: linear-gradient(180deg, rgba(0,0,0,1) 0%, rgba(49,49,74,1) 51%, rgba(93,130,138,1) 100%);
+  opacity: 50%;
+
+  border-radius: 40px;
+}
+
 #panier{
-  margin-top: 10px;
   font-size: 2rem;
   color: white;
 }
+
+.priceTotal{
+  margin-top: 40px;
+  font-size: 2rem;
+  color: rgb(167, 167, 167);
+}
+
+/* ================================
+    ICON
+   ================================ */
+
+button{
+  border: 1px solid white;
+  background: linear-gradient(180deg, rgba(0,0,0,1) 0%, rgba(49,49,74,1) 51%, rgba(93,130,138,1) 100%);
+  border-radius: 4px;
+  padding: 5px 5px;
+
+  margin-bottom: 15px;
+
+  transition: all 5s ease-out;
+}   
+
+button:hover{
+  background: linear-gradient(180deg, rgba(0,0,0,1) 0%, rgba(49,49,74,1) 51%, rgba(223,43,214,1) 100%);
+}     
+
+button:focus{
+  background: linear-gradient(180deg, rgba(0,0,0,1) 0%, rgba(49,49,74,1) 51%, rgba(223,43,214,1) 100%);
+}
+
+.sizeIcon{
+  width: 20px;
+}
+
 </style>

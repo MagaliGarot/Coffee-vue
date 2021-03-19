@@ -17,7 +17,10 @@ export default {
 
 <style>
 
-/* ALL */
+/* ================================
+    APP GENERAL
+   ================================ */
+
   * {
       margin: 0;
       padding: 0;
@@ -31,8 +34,12 @@ export default {
 
   body{
       background-image: url("assets/fond.jpg");
-      background-repeat: no-repeat;
+      background-repeat: repeat;
       background-size: cover;
+  }
+
+  a {
+  color: #8d9bc3;
   }
 
   #app {
