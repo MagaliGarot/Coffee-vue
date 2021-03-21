@@ -6,10 +6,12 @@ https://boring-ride-d2f2ef.netlify.app/
 
 # 🗒Le projet :
 
-Realization of a project in the but to study Vue.js
-
+Realization of a project in the but to study Vue.js.
 
 ![<Visuel>](/src/assets/Coffee.png)
+
+Success of a court on Vue.js with Openclassrooms.
+
 ![<Visuel>](/src/assets/captureopenclassrooms.png)
 
 ## 🔧 Langages
