@@ -1,5 +1,4 @@
 # ☕ Coffee 
-## 📋 Subject : To do list 
 
 # 🔗 Lien vers le projet : 
 
@@ -7,9 +6,11 @@ https://boring-ride-d2f2ef.netlify.app/
 
 # 🗒Le projet :
 
-Réalisation d'un WorkShop chez BeCode Liège en vue.js, présentation du framework et réalisation d'une To do list.
+Realization of a project in the but to study Vue.js
+
 
 ![<Visuel>](/src/assets/Coffee.png)
+![<Visuel>](/src/assets/captureopenclassrooms.png)
 
 ## 🔧 Langages
 
